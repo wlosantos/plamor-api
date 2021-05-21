@@ -19,7 +19,7 @@ gem 'devise_token_auth'
 gem 'cpf_cnpj'
 
 # gem 'enumerate_it'
-# gem 'active_model_serializers', '~> 0.10.12'
+gem 'active_model_serializers', '~> 0.10.12'
 # gem 'ransack', '~> 2.4', '>= 2.4.2'
 gem 'rack-cors'
 

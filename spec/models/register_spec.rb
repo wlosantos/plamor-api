@@ -23,6 +23,10 @@ RSpec.describe Register, type: :model do
       it { should define_enum_for(:status).with_values(%i[ active inactive ])}
     end
 
+    context 'associations' do
+      it { is_expected.to belong_to :user }
+    end
+
     context 'new register' do
       let(:user) { create(:user) }
       let(:register) { create(:register, user: user) }

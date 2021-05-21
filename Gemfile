@@ -21,7 +21,7 @@ gem 'devise_token_auth'
 # gem 'enumerate_it'
 # gem 'active_model_serializers', '~> 0.10.12'
 # gem 'ransack', '~> 2.4', '>= 2.4.2'
-# gem 'rack-cors'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

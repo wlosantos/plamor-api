@@ -14,7 +14,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # gem 'devise'
 # gem 'omniauth'
-# gem 'devise_token_auth'
+gem 'devise_token_auth'
 
 # gem 'cpf_cnpj'
 

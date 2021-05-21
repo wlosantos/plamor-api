@@ -31,4 +31,18 @@ RSpec.describe "Api::V1::Registers", type: :request do
     end
   end
 
+  describe 'GET /registers/:id' do
+    context '#show' do
+      let(:register) { create(:register, user: user) }
+      before { get "/registers/#{register.id}", params: {}, headers: headers }
+    end
+
+    it 'return status code 200' do
+      expect(response).to have_http_status(:ok)
+    end
+    # it 'return the json data' do
+    #   expect(json_body[:data][:attributes][:name]).to eq(register.name)
+    # end
+  end
+
 end

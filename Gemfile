@@ -16,7 +16,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # gem 'omniauth'
 gem 'devise_token_auth'
 
-# gem 'cpf_cnpj'
+gem 'cpf_cnpj'
 
 # gem 'enumerate_it'
 # gem 'active_model_serializers', '~> 0.10.12'

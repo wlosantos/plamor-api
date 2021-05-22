@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_103441) do
+ActiveRecord::Schema.define(version: 2021_05_21_232033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "registers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "contract"
+    t.string "cpf"
+    t.string "rg"
+    t.datetime "birth"
+    t.integer "plain", default: 0
+    t.integer "status", default: 0
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "parent_id"
+    t.index ["parent_id"], name: "index_registers_on_parent_id"
+    t.index ["user_id"], name: "index_registers_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -27,9 +43,16 @@ ActiveRecord::Schema.define(version: 2021_05_21_103441) do
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "registers", "registers", column: "parent_id"
+  add_foreign_key "registers", "users"
 end

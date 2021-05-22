@@ -12,14 +12,14 @@ gem 'puma', '~> 5.0'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 
-# gem 'devise'
-# gem 'omniauth'
+gem 'devise'
+gem 'omniauth'
 gem 'devise_token_auth'
 
-# gem 'cpf_cnpj'
+gem 'cpf_cnpj'
 
 # gem 'enumerate_it'
-# gem 'active_model_serializers', '~> 0.10.12'
+gem 'active_model_serializers', '~> 0.10.12'
 # gem 'ransack', '~> 2.4', '>= 2.4.2'
 gem 'rack-cors'
 
@@ -41,6 +41,7 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'letter_opener'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

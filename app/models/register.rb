@@ -8,7 +8,7 @@ class Register < ApplicationRecord
   enum status: %i[ active inactive ]
 
   validates :name, :contract, :birth, presence: true
-  validates :cpf, uniqueness: true
+  # validates :cpf, uniqueness: true
   before_validation :validate_cpf, on: [:create, :update]
   before_validation :set_dependent, on: :create
 

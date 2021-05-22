@@ -2,6 +2,7 @@ class Register < ApplicationRecord
 
   belongs_to :user
   has_many :address
+  has_many :contacts
   belongs_to :parent, class_name: 'Register', optional: true
   has_many :sub_registers, class_name: 'Register', foreign_key: :parent_id, dependent: :destroy
 

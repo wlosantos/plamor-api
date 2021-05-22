@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth'
       resources :registers
       resources :addresses, only: %i[ create update destroy ]
+      resources :contacts, only: %i[ create update destroy ]
     end
   end
 

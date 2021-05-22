@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     namespace :v1, path: '/', constraints: ApiVersionConstraint.new(version: 1, default: true) do
       mount_devise_token_auth_for 'User', at: 'auth'
       resources :registers
-      resources :addresses, only: %i[ create ]
+      resources :addresses, only: %i[ create update destroy ]
     end
   end
 

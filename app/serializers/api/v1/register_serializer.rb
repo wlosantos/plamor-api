@@ -21,8 +21,13 @@ class Api::V1::RegisterSerializer < ActiveModel::Serializer
       {
         'id': ad.id,
         'street': ad.street,
-        'number': ad.number
-
+        'number': ad.number,
+        'complement': ad.complement,
+        'neighborhood': ad.neighborhood,
+        'city': ad.city,
+        'state': ad.state,
+        'country': ad.country,
+        'zipcode': ad.zipcode
       }
     end
   end

@@ -8,11 +8,21 @@ class Register < ApplicationRecord
   enum status: %i[ active inactive ]
 
   validates :name, :contract, :birth, presence: true
+  validates :cpf, uniqueness: true
   before_validation :validate_cpf, on: [:create, :update]
+  before_validation :set_dependent, on: :create
 
   protected
 
   def validate_cpf
     errors.add(:cpf, 'is invalid!!!') unless CPF.valid?(self.cpf)
+  end
+
+  def set_dependent
+    if self.parent_id.nil? || self.parent_id == ''
+      self.plain  = :holder
+    else
+      self.plain = :dependent
+    end
   end
 end

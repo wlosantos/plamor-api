@@ -39,7 +39,7 @@ class Api::V1::RegistersController < ApplicationController
 
   def register_params
     params.require(:register).permit(:name, :contract, :cpf, :rg,
-    :birth, :plain, :status)
+    :birth, :plain, :status, :parent_id)
   end
 
 end

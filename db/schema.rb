@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_190305) do
+ActiveRecord::Schema.define(version: 2021_05_22_210923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 2021_05_22_190305) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "neighborhood", null: false
     t.index ["register_id"], name: "index_addresses_on_register_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer "kind", default: 0
+    t.string "description"
+    t.bigint "register_id", null: false
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["register_id"], name: "index_contacts_on_register_id"
   end
 
   create_table "registers", force: :cascade do |t|
@@ -69,6 +79,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_190305) do
   end
 
   add_foreign_key "addresses", "registers"
+  add_foreign_key "contacts", "registers"
   add_foreign_key "registers", "registers", column: "parent_id"
   add_foreign_key "registers", "users"
 end

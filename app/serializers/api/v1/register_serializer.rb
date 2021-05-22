@@ -1,6 +1,6 @@
 class Api::V1::RegisterSerializer < ActiveModel::Serializer
   attributes :id, :name, :cpf, :rg, :contract, :birth, :plain,
-             :status, :dependents
+             :status, :dependents, :address
 
   def dependents
     object.sub_registers.map do |parent|
@@ -12,6 +12,17 @@ class Api::V1::RegisterSerializer < ActiveModel::Serializer
         'contract': parent.contract,
         'birth': parent.birth,
         'status': parent.status
+      }
+    end
+  end
+
+  def address
+    object.address.map do |ad|
+      {
+        'id': ad.id,
+        'street': ad.street,
+        'number': ad.number
+
       }
     end
   end

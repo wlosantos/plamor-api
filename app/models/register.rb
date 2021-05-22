@@ -8,11 +8,11 @@ class Register < ApplicationRecord
   enum status: %i[ active inactive ]
 
   validates :name, :contract, :birth, presence: true
-  before_validation :validate_cpf, on: :create
+  before_validation :validate_cpf, on: [:create, :update]
 
   protected
 
   def validate_cpf
-    errors.add(:cpf, 'document invalid!!!') unless CPF.valid?(self.cpf)
+    errors.add(:cpf, 'is invalid!!!') unless CPF.valid?(self.cpf)
   end
 end

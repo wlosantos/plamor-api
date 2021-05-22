@@ -2,7 +2,7 @@ class Api::V1::RegistersController < ApplicationController
 
   before_action :authenticate_user!
 
-  before_action :set_register, only: %i[ show ]
+  before_action :set_register, only: %i[ show update ]
 
   def index
     @registers = Register.all
@@ -18,6 +18,14 @@ class Api::V1::RegistersController < ApplicationController
 
     if @register.save
       render json: @register, status: :created
+    else
+      render json: { errors: @register.errors.full_messages }, status: 422
+    end
+  end
+
+  def update
+    if @register.update(register_params)
+      render json: @register, status: :ok
     else
       render json: { errors: @register.errors.full_messages }, status: 422
     end

@@ -1,6 +1,4 @@
-class Api::V1::RegistersController < ApplicationController
-
-  before_action :authenticate_user!
+class Api::V1::RegistersController < Api::V1::BaseV1Controller
 
   before_action :set_register, only: %i[ show update ]
 
@@ -39,7 +37,7 @@ class Api::V1::RegistersController < ApplicationController
 
   def register_params
     params.require(:register).permit(:name, :contract, :cpf, :rg,
-    :birth, :plain, :status)
+    :birth, :plain, :status, :parent_id)
   end
 
 end

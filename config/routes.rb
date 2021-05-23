@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :registers
       resources :addresses, only: %i[ create update destroy ]
       resources :contacts, only: %i[ create update destroy ]
+      resources :companies, only: %i[ show create update destroy ]
     end
   end
 

@@ -4,5 +4,5 @@ class Company < ApplicationRecord
 
   enum status: %i[ active inactive ]
 
-  validates :year_attained, :value_unit, presence: true
+  validates :name, :year_attained, :value_unit, presence: true
 end

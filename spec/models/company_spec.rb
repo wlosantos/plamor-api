@@ -4,12 +4,14 @@ RSpec.describe Company, type: :model do
 
   describe 'model' do
     context 'database columns' do
+      it { is_expected.to respond_to :name }
       it { is_expected.to respond_to :year_attained }
       it { is_expected.to respond_to :value_unit }
       it { is_expected.to respond_to :status }
     end
 
     context 'validations' do
+      it { is_expected.to validate_presence_of :name }
       it { is_expected.to validate_presence_of :year_attained }
       it { is_expected.to validate_presence_of :value_unit }
       it { should define_enum_for(:status).with_values(%i[ active inactive ])}
